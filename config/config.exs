@@ -9,6 +9,9 @@ config :traffic_analyzer, TrafficAnalyzer.Scheduler,
     {"* * * * *", fn -> require Logger; Logger.debug("quantum heartbeat...") end}
   ]
 
+config :traffic_analyzer,
+  path_source: TrafficAnalyzer.PathSource.MockedSource
+
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,
