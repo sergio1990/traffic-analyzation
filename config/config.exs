@@ -11,7 +11,8 @@ config :traffic_analyzer, TrafficAnalyzer.Scheduler,
   ]
 
 config :traffic_analyzer,
-  path_source: TrafficAnalyzer.PathSource.MockedSource
+  path_source: TrafficAnalyzer.PathSource.MockedSource,
+  result_persistance: TrafficAnalyzer.ScrapingResult.MockedPersistance
 
 config :exq,
   name: Exq,
