@@ -24,3 +24,6 @@ traffic_analyzer-*.tar
 
 # Ignore VIM swap files
 *.swp
+
+# Redis DB dump file
+dump.rdb

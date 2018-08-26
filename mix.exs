@@ -14,7 +14,7 @@ defmodule TrafficAnalyzer.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :timex, :exq],
+      extra_applications: [:logger, :timex, :exq, :google_maps],
       mod: {TrafficAnalyzer.Application, []}
     ]
   end
@@ -24,7 +24,8 @@ defmodule TrafficAnalyzer.MixProject do
     [
       {:quantum, "2.3.2"},
       {:timex, "~> 3.0"},
-      {:exq, "~> 0.12.1"}
+      {:exq, "~> 0.12.1"},
+      {:google_maps, "0.10.0"}
     ]
   end
 end

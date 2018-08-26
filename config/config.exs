@@ -26,6 +26,9 @@ config :exq,
   scheduler_enable: true,
   max_retries: 25,
   shutdown_timeout: 5000
+
+config :google_maps,
+  api_key: "<API_KEY>"
 # This configuration is loaded before any dependency and is restricted
 # to this project. If another project depends on this project, this
 # file won't be loaded nor affect the parent project. For this reason,
