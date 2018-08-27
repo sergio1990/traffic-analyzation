@@ -6,6 +6,8 @@ defmodule TrafficAnalyzer.ScrapingResult.MockedPersistance do
   @behaviour Persistance
 
   def save(result) do
-    Logger.debug("Attempt to save the next result: #{inspect(result)}")   
+    Logger.debug(fn ->
+      "Attempt to save the next result: #{inspect(result)}"
+    end)
   end
 end

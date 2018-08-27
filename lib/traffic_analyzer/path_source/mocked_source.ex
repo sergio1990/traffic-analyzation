@@ -1,9 +1,9 @@
 defmodule TrafficAnalyzer.PathSource.MockedSource do
-  alias TrafficAnalyzer.PathSource.{Source, Path}
+  alias TrafficAnalyzer.PathSource.{Path, Source}
 
   @behaviour Source
 
-  def observable_paths() do
+  def observable_paths do
     [
       %Path{
         key: "test",

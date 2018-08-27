@@ -3,7 +3,9 @@ require Logger
 defmodule TrafficAnalyzer.JobService do
   def call do
     observable_paths = path_source().observable_paths()
-    Logger.debug("Available path to be observable: #{inspect(observable_paths)}")
+    Logger.debug(fn ->
+      "Available path to be observable: #{inspect(observable_paths)}"
+    end)
     Enum.each(observable_paths, fn(path) -> enqueue_job_for(path) end)
   end
 

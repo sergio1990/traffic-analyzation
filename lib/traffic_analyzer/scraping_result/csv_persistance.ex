@@ -8,7 +8,9 @@ defmodule TrafficAnalyzer.ScrapingResult.CSVPersistance do
   @attributes ["path_key", "description", "distance", "duration_in_traffic", "start_address", "end_address", "scraped_at"]
 
   def save(result) do
-    Logger.debug("Attempt to save the next result: #{inspect(result)}")   
+    Logger.debug(fn ->
+      "Attempt to save the next result: #{inspect(result)}"
+    end)
     file_path = prepare_file_for_results()
     write_result(file_path, result)
   end
@@ -41,4 +43,3 @@ defmodule TrafficAnalyzer.ScrapingResult.CSVPersistance do
     Enum.join(@attributes, ";")
   end
 end
-

@@ -5,7 +5,9 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
   alias TrafficAnalyzer.ScrapingResult.Result
 
   def perform(path) do
-    Logger.debug("The scraper job is run with #{inspect(path)}") 
+    Logger.debug(fn ->
+      "The scraper job is run with #{inspect(path)}"
+    end)
     path
     |> make_gmaps_request
     |> process_response
