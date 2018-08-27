@@ -4,6 +4,8 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
   alias TrafficAnalyzer.PathSource.Path
   alias TrafficAnalyzer.ScrapingResult.Result
 
+  @persistance_client Application.get_env(:traffic_analyzer, :result_persistance)
+
   def perform(path) do
     Logger.debug(fn ->
       "The scraper job is run with #{inspect(path)}"
@@ -47,8 +49,7 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
 
   @spec save_result(Result.t) :: none()
   defp save_result(%Result{} = result) do
-    persistance = resolve_result_persistance()
-    persistance.save(result)
+    @persistance_client.save(result)
   end
 
   @spec wrap_route(map()) :: Result.t
@@ -63,9 +64,5 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
       end_address: leg["end_address"],
       scraped_at: :os.system_time(:seconds)
     }
-  end
-
-  defp resolve_result_persistance do
-    Application.get_env(:traffic_analyzer, :result_persistance)
   end
 end
