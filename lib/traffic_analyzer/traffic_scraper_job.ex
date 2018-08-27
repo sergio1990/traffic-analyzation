@@ -50,7 +50,8 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
       distance: leg["distance"]["value"],
       duration_in_traffic: leg["duration_in_traffic"]["value"],
       start_address: leg["start_address"],
-      end_address: leg["end_address"]
+      end_address: leg["end_address"],
+      scraped_at: :os.system_time(:seconds)
     }
   end
 

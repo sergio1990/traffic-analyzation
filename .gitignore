@@ -33,3 +33,4 @@ dump.rdb
 
 config/*.secret.exs
 !config/example.secret.exs
+results.csv
