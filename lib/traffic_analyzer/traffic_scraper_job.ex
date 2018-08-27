@@ -25,20 +25,28 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
       departure_time: "now",
       traffic_model: "best_guess"
     ]
-    {:ok, response} = GoogleMaps.directions(origin, destination, options)
-    {path["key"], response}
+    case GoogleMaps.directions(origin, destination, options) do
+      {:ok, response} -> {:ok, path["key"], response}
+      {:error, status, error_message} -> {:error, "#{status} - #{error_message}"}
+    end
   end
 
-  @spec process_response({binary(), map()}) :: [Result.t]
-  defp process_response({path_key, response}) do
+  @spec process_response({:ok, binary(), map()} | {:error, binary()}) :: [Result.t] | []
+  defp process_response({:ok, path_key, response}) do
     Enum.map(response["routes"], fn(route_map) ->
       result = wrap_route(route_map)
       %{result | path_key: path_key}
     end)
   end
+  defp process_response({:error, error_message}) do
+    Logger.error(fn ->
+      "The GMaps API request failed! Details: #{error_message}"
+    end)
+    []
+  end
 
   @spec save_result(Result.t) :: none()
-  defp save_result(result) do
+  defp save_result(%Result{} = result) do
     persistance = resolve_result_persistance()
     persistance.save(result)
   end
