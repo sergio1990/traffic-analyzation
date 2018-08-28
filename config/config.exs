@@ -1,6 +1,5 @@
 use Mix.Config
 
-
 config :logger,
   backends: [:console],
   level: :debug
@@ -13,7 +12,8 @@ config :traffic_analyzer, TrafficAnalyzer.Scheduler,
 
 config :traffic_analyzer,
   path_source: TrafficAnalyzer.PathSource.MockedSource,
-  result_persistance: TrafficAnalyzer.ScrapingResult.CSVPersistance
+  result_persistance: TrafficAnalyzer.ScrapingResult.CSVPersistance,
+  job_enqueuer: TrafficAnalyzer.DelayedWork.ExqEnqueuer
 
 config :exq,
   name: Exq,

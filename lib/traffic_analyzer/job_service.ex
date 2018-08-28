@@ -2,6 +2,7 @@ require Logger
 
 defmodule TrafficAnalyzer.JobService do
   @paths_source_client Application.get_env(:traffic_analyzer, :path_source)
+  @job_enqueuer Application.get_env(:traffic_analyzer, :job_enqueuer)
 
   def call do
     observable_paths = @paths_source_client.observable_paths()
@@ -12,6 +13,6 @@ defmodule TrafficAnalyzer.JobService do
   end
 
   defp enqueue_job_for(path) do
-    Exq.enqueue(Exq, "default", TrafficAnalyzer.TrafficScraperJob, [path])
+    @job_enqueuer.enqueue(TrafficAnalyzer.TrafficScraperJob, [path])
   end
 end
