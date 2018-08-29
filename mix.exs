@@ -26,6 +26,8 @@ defmodule TrafficAnalyzer.MixProject do
       {:timex, "~> 3.0"},
       {:exq, "~> 0.12.1"},
       {:google_maps, "0.10.0"},
+      {:ecto, "2.2.10"},
+      {:postgrex, "0.13.5"},
       {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false}
     ]
   end

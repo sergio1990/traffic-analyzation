@@ -6,7 +6,8 @@ defmodule TrafficAnalyzer.Application do
   def start(_type, _args) do
     import Supervisor.Spec, warn: false
     children = [
-      worker(TrafficAnalyzer.Scheduler, [])
+      worker(TrafficAnalyzer.Scheduler, []),
+      TrafficAnalyzer.DB.Repo
     ]
 
     opts = [strategy: :one_for_one, name: TrafficAnalyzer.Supervisor]

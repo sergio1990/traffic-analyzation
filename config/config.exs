@@ -13,7 +13,8 @@ config :traffic_analyzer, TrafficAnalyzer.Scheduler,
 config :traffic_analyzer,
   path_source: TrafficAnalyzer.PathSource.MockedSource,
   result_persistance: TrafficAnalyzer.ScrapingResult.CSVPersistance,
-  job_enqueuer: TrafficAnalyzer.DelayedWork.ExqEnqueuer
+  job_enqueuer: TrafficAnalyzer.DelayedWork.ExqEnqueuer,
+  ecto_repos: [TrafficAnalyzer.DB.Repo]
 
 config :exq,
   name: Exq,
@@ -30,5 +31,13 @@ config :exq,
 
 config :google_maps,
   api_key: "<API-KEY>"
+
+config :traffic_analyzer, TrafficAnalyzer.DB.Repo,
+  adapter: Ecto.Adapters.Postgres,
+  database: "traffic_analyzer",
+  username: "traffic_analyzer",
+  password: "traffic_analyzer",
+  hostname: "localhost",
+  port: 5432
 
 import_config "#{Mix.env()}.secret.exs"
