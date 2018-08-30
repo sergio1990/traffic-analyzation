@@ -1,11 +1,12 @@
 defmodule TrafficAnalyzer.PathSource.MockedSource do
-  alias TrafficAnalyzer.PathSource.{Path, Source}
+  alias TrafficAnalyzer.PathSource.Source
+  alias TrafficAnalyzer.PathData
 
   @behaviour Source
 
   def observable_paths do
     [
-      %Path{
+      %PathData{
         key: "test",
         lat_start: 50.521652,
         lng_start: 30.129102,

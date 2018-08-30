@@ -1,7 +1,7 @@
 require Logger
 
 defmodule TrafficAnalyzer.ScrapingResult.MockedPersistance do
-  alias TrafficAnalyzer.ScrapingResult.{Persistance, Result}
+  alias TrafficAnalyzer.ScrapingResult.Persistance
 
   @behaviour Persistance
 

@@ -1,7 +1,7 @@
 defmodule TrafficAnalyzer.TrafficScraperJob do
   require Logger
 
-  alias TrafficAnalyzer.PathSource.Path
+  alias TrafficAnalyzer.PathData
   alias TrafficAnalyzer.ScrapingResult.Result
 
   @persistance_client Application.get_env(:traffic_analyzer, :result_persistance)
@@ -16,7 +16,7 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
     |> Enum.each(&save_result/1)
   end
 
-  @spec make_gmaps_request(Path.t) :: {binary(), map()}
+  @spec make_gmaps_request(PathData.t) :: {binary(), map()}
   defp make_gmaps_request(path) do
     origin = "#{path["lat_start"]},#{path["lng_start"]}"
     destination = "#{path["lat_end"]},#{path["lng_end"]}"

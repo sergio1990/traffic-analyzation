@@ -1,5 +1,5 @@
 defmodule TrafficAnalyzer.PathSource.Source do
-  alias TrafficAnalyzer.PathSource.Path
+  alias TrafficAnalyzer.PathData
 
-  @callback observable_paths() :: [Path.t]
+  @callback observable_paths() :: [PathData.t]
 end

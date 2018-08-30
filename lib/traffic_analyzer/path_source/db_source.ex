@@ -1,7 +1,8 @@
 defmodule TrafficAnalyzer.PathSource.DBSource do
   alias TrafficAnalyzer.DB
   alias TrafficAnalyzer.DB.Repo
-  alias TrafficAnalyzer.PathSource.{Path, Source}
+  alias TrafficAnalyzer.PathSource.Source
+  alias TrafficAnalyzer.PathData
 
   @behaviour Source
 
@@ -12,7 +13,7 @@ defmodule TrafficAnalyzer.PathSource.DBSource do
   end
 
   defp wrap(path_record) do
-    %Path{
+    %PathData{
       key: path_record.key,
       lat_start: path_record.lat_start,
       lng_start: path_record.lng_start,
