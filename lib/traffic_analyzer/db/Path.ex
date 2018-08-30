@@ -8,6 +8,8 @@ defmodule TrafficAnalyzer.DB.Path do
     field :lng_start, :float
     field :lat_end, :float
     field :lng_end, :float
+
+    timestamps
   end
 
   def changeset(path, params \\ %{}) do

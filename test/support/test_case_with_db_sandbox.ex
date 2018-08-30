@@ -7,15 +7,15 @@ defmodule TestCaseWithDbSandbox do
 
   using do
     quote do
-      import Storage.Factory
-      alias Storage.DB.Repo
+      import TrafficAnalyzer.Factory
+      alias TrafficAnalyzer.DB.Repo
     end
   end
 
 
   setup do
-    :ok = Ecto.Adapters.SQL.Sandbox.checkout(Storage.DB.Repo)
-    Ecto.Adapters.SQL.Sandbox.mode(Storage.DB.Repo, {:shared, self()})
+    :ok = Ecto.Adapters.SQL.Sandbox.checkout(TrafficAnalyzer.DB.Repo)
+    Ecto.Adapters.SQL.Sandbox.mode(TrafficAnalyzer.DB.Repo, {:shared, self()})
     :ok
   end
 end

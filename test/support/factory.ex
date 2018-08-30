@@ -1,9 +1,9 @@
 defmodule TrafficAnalyzer.Factory do
   use ExMachina.Ecto, repo: TrafficAnalyzer.DB.Repo
 
-  alias TrafficAnalyzer.Repo.{Path}
+  alias TrafficAnalyzer.DB.{Path}
 
-  def factory(:path) do
+  def path_factory do
     %Path{
       key: Faker.Internet.user_name(),
       lat_start: random_coord(),
@@ -14,6 +14,6 @@ defmodule TrafficAnalyzer.Factory do
   end
 
   defp random_coord do
-    Kernel.rand * 180.0
+    :rand.uniform * 180.0
   end
 end
