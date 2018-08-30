@@ -1,4 +1,4 @@
-defmodule TrafficAnalyzer.ScrapingResult.Result do
+defmodule TrafficAnalyzer.ResultData do
   defstruct [
     :description,
     :distance,

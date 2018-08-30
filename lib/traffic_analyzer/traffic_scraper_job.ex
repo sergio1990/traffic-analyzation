@@ -2,7 +2,7 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
   require Logger
 
   alias TrafficAnalyzer.PathData
-  alias TrafficAnalyzer.ScrapingResult.Result
+  alias TrafficAnalyzer.ResultData
 
   @persistance_client Application.get_env(:traffic_analyzer, :result_persistance)
 
@@ -33,7 +33,7 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
     end
   end
 
-  @spec process_response({:ok, binary(), map()} | {:error, binary()}) :: [Result.t] | []
+  @spec process_response({:ok, binary(), map()} | {:error, binary()}) :: [ResultData.t] | []
   defp process_response({:ok, path_key, response}) do
     Enum.map(response["routes"], fn(route_map) ->
       result = wrap_route(route_map)
@@ -47,16 +47,16 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
     []
   end
 
-  @spec save_result(Result.t) :: none()
-  defp save_result(%Result{} = result) do
+  @spec save_result(ResultData.t) :: none()
+  defp save_result(%ResultData{} = result) do
     @persistance_client.save(result)
   end
 
-  @spec wrap_route(map()) :: Result.t
+  @spec wrap_route(map()) :: ResultData.t
   defp wrap_route(route_map) do
     # It means that we have no intermediate points on the way
     leg = Enum.at(route_map["legs"], 0)
-    %Result{
+    %ResultData{
       description: route_map["summary"],
       distance: leg["distance"]["value"],
       duration_in_traffic: leg["duration_in_traffic"]["value"],

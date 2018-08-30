@@ -1,5 +1,5 @@
 defmodule TrafficAnalyzer.ScrapingResult.Persistance do
-  alias TrafficAnalyzer.ScrapingResult.Result
+  alias TrafficAnalyzer.ResultData
 
-  @callback save(Result.t) :: none()
+  @callback save(ResultData.t) :: none()
 end
