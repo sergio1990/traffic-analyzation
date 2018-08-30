@@ -7,7 +7,8 @@ defmodule TrafficAnalyzer.MixProject do
       version: "0.1.0",
       elixir: "~> 1.7",
       start_permanent: Mix.env() == :prod,
-      deps: deps()
+      deps: deps(),
+      elixirc_paths: elixirc_paths(Mix.env),
     ]
   end
 
@@ -28,7 +29,9 @@ defmodule TrafficAnalyzer.MixProject do
       {:google_maps, "0.10.0", runtime: false},
       {:ecto, "2.2.10"},
       {:postgrex, "0.13.5"},
-      {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false}
+      {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false},
+      {:faker, "0.10.0", only: [:test]},
+      {:ex_machina, "2.2.0", only: [:test]}
     ]
   end
 
@@ -36,4 +39,7 @@ defmodule TrafficAnalyzer.MixProject do
   defp extra_applications(:dev), do: extra_applications(:default) ++ [:exq, :google_maps]
   defp extra_applications(:test), do: extra_applications(:default)
   defp extra_applications(_), do: [:logger, :timex]
+
+  defp elixirc_paths(:test), do: ["lib", "test/support"]
+  defp elixirc_paths(_), do: ["lib"]
 end
