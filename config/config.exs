@@ -11,7 +11,7 @@ config :traffic_analyzer, TrafficAnalyzer.Scheduler,
   ]
 
 config :traffic_analyzer,
-  path_source: TrafficAnalyzer.PathSource.MockedSource,
+  path_source: TrafficAnalyzer.PathSource.StubSource,
   result_persistance: TrafficAnalyzer.ScrapingResult.CSVPersistance,
   job_enqueuer: TrafficAnalyzer.DelayedWork.ExqEnqueuer,
   ecto_repos: [TrafficAnalyzer.DB.Repo]

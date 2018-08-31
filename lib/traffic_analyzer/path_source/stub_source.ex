@@ -1,4 +1,4 @@
-defmodule TrafficAnalyzer.PathSource.MockedSource do
+defmodule TrafficAnalyzer.PathSource.StubSource do
   alias TrafficAnalyzer.PathSource.Source
   alias TrafficAnalyzer.PathData
 
