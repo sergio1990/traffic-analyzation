@@ -1,6 +1,6 @@
 require Logger
 
-defmodule TrafficAnalyzer.DelayedWork.MockedEnqueuer do
+defmodule TrafficAnalyzer.DelayedWork.FakeEnqueuer do
   alias TrafficAnalyzer.DelayedWork.JobEnqueuer
 
   @behaviour JobEnqueuer
