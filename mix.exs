@@ -31,7 +31,8 @@ defmodule TrafficAnalyzer.MixProject do
       {:postgrex, "0.13.5"},
       {:credo, "~> 0.10.0", only: [:dev, :test], runtime: false},
       {:faker, "0.10.0", only: [:test]},
-      {:ex_machina, "2.2.0", only: [:test]}
+      {:ex_machina, "2.2.0", only: [:test]},
+      {:mox, "0.4.0", only: [:test]}
     ]
   end
 
