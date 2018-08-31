@@ -5,6 +5,7 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
   alias TrafficAnalyzer.ResultData
 
   @persistance_client Application.get_env(:traffic_analyzer, :result_persistance)
+  @directions_api_client Application.get_env(:traffic_analyzer, :directions_api_client)
 
   def perform(path) do
     Logger.debug(fn ->
@@ -27,9 +28,9 @@ defmodule TrafficAnalyzer.TrafficScraperJob do
       departure_time: "now",
       traffic_model: "best_guess"
     ]
-    case GoogleMaps.directions(origin, destination, options) do
+    case @directions_api_client.directions(origin, destination, options) do
       {:ok, response} -> {:ok, path["key"], response}
-      {:error, status, error_message} -> {:error, "#{status} - #{error_message}"}
+      {:error, error_message} -> {:error, error_message}
     end
   end
 
