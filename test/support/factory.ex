@@ -6,14 +6,10 @@ defmodule TrafficAnalyzer.Factory do
   def path_factory do
     %Path{
       key: Faker.Internet.user_name(),
-      lat_start: random_coord(),
-      lat_end: random_coord(),
-      lng_start: random_coord(),
-      lng_end: random_coord()
+      lat_start: Faker.Address.latitude(),
+      lat_end: Faker.Address.latitude(),
+      lng_start: Faker.Address.longitude(),
+      lng_end: Faker.Address.longitude()
     }
-  end
-
-  defp random_coord do
-    :rand.uniform * 180.0
   end
 end
