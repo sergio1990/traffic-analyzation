@@ -1,6 +1,6 @@
 defmodule TrafficAnalyzer.PathSource.StubSource do
-  alias TrafficAnalyzer.PathSource.Source
   alias TrafficAnalyzer.PathData
+  alias TrafficAnalyzer.PathSource.Source
 
   @behaviour Source
 

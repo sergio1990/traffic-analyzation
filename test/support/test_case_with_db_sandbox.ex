@@ -12,7 +12,6 @@ defmodule TestCaseWithDbSandbox do
     end
   end
 
-
   setup do
     :ok = Ecto.Adapters.SQL.Sandbox.checkout(TrafficAnalyzer.DB.Repo)
     Ecto.Adapters.SQL.Sandbox.mode(TrafficAnalyzer.DB.Repo, {:shared, self()})

@@ -1,8 +1,8 @@
 defmodule TrafficAnalyzer.PathSource.DBSource do
   alias TrafficAnalyzer.DB
   alias TrafficAnalyzer.DB.Repo
-  alias TrafficAnalyzer.PathSource.Source
   alias TrafficAnalyzer.PathData
+  alias TrafficAnalyzer.PathSource.Source
 
   @behaviour Source
 

@@ -1,8 +1,8 @@
 defmodule TrafficAnalyzer.PathSourceDBSourceTest do
   use TestCaseWithDbSandbox
 
-  alias TrafficAnalyzer.PathSource.DBSource
   alias TrafficAnalyzer.PathData
+  alias TrafficAnalyzer.PathSource.DBSource
 
   test "observable_paths returns all paths contained in the DB" do
     insert(:path)

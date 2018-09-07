@@ -24,7 +24,7 @@ defmodule TrafficAnalyzer.ScrapingResult.DbPersistance do
       end_address: result_data.end_address
     }
     case fetch_path(result_data.path_key) do
-      {:ok, path} -> 
+      {:ok, path} ->
         complete_result_params = Map.put(result_params, :path_id, path.id)
         {:ok, Result.changeset(%Result{}, complete_result_params)}
       {:error, reason} ->
