@@ -1,7 +1,7 @@
 defmodule TrafficAnalyzer.DataFactory do
   use ExMachina
 
-  alias TrafficAnalyzer.PathData
+  alias TrafficAnalyzer.{PathData, ResultData}
 
   def path_factory do
     %PathData{
@@ -10,6 +10,17 @@ defmodule TrafficAnalyzer.DataFactory do
       lat_end: Faker.Address.latitude(),
       lng_start: Faker.Address.longitude(),
       lng_end: Faker.Address.longitude()
+    }
+  end
+
+  def result_factory do
+    %ResultData{
+      description: Faker.Lorem.sentence,
+      distance: Faker.Random.Elixir.random_between(10, 1000),
+      duration_in_traffic: Faker.Random.Elixir.random_between(10, 1000),
+      start_address: Faker.Address.street_address(true),
+      end_address: Faker.Address.street_address(true),
+      scraped_at: :os.system_time(:seconds)
     }
   end
 

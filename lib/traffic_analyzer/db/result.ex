@@ -15,7 +15,7 @@ defmodule TrafficAnalyzer.DB.Result do
 
   def changeset(result, params \\ %{}) do
     result
-    |> cast(result, [:description, :distance, :duration_in_traffic, :path_id, :start_address, :end_address])
+    |> cast(params, [:description, :distance, :duration_in_traffic, :path_id, :start_address, :end_address])
     |> validate_required([:description, :distance, :duration_in_traffic, :start_address, :end_address])
     |> assoc_constraint(:path)
   end
