@@ -19,8 +19,8 @@ config :traffic_analyzer,
 
 config :exq,
   name: Exq,
-  host: "<REDIS-HOST>",
-  port: 6379,
+  host: System.get_env("REDIS_HOST"),
+  port: Syetem.get_env("REDIS_PORT"),
   namespace: "exq",
   concurrency: :infinite,
   queues: ["default"],
@@ -31,14 +31,14 @@ config :exq,
   shutdown_timeout: 5000
 
 config :google_maps,
-  api_key: "<API-KEY>"
+  api_key: System.get_env("GMAPS_API_KEY")
 
 config :traffic_analyzer, TrafficAnalyzer.DB.Repo,
   adapter: Ecto.Adapters.Postgres,
-  database: "traffic_analyzer",
-  username: "traffic_analyzer",
-  password: "traffic_analyzer",
-  hostname: "localhost",
-  port: 5432
+  database: System.get_env("DB_NAME"),
+  username: System.get_env("DB_USERNAME"),
+  password: System.get_env("DB_PASSWORD"),
+  hostname: System.get_env("DB_HOST"),
+  port: System.get_env("DB_PORT")
 
 import_config "#{Mix.env()}.secret.exs"
