@@ -41,4 +41,6 @@ config :traffic_analyzer, TrafficAnalyzer.DB.Repo,
   hostname: System.get_env("DB_HOST"),
   port: System.get_env("DB_PORT")
 
-import_config "#{Mix.env()}.secret.exs"
+if File.exists?("#{Mix.env()}.secret.exs") do
+  import_config "#{Mix.env()}.secret.exs"
+end
