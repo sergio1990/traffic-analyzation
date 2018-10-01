@@ -41,7 +41,7 @@ defmodule TrafficAnalyzer.MixProject do
   defp extra_applications(:prod), do: extra_applications(:dev)
   defp extra_applications(:dev), do: extra_applications(:default) ++ [:exq, :google_maps]
   defp extra_applications(:test), do: extra_applications(:default)
-  defp extra_applications(_), do: [:logger, :timex]
+  defp extra_applications(_), do: [:logger, :timex, :mix]
 
   defp elixirc_paths(:test), do: ["lib", "test/support"]
   defp elixirc_paths(_), do: ["lib"]
