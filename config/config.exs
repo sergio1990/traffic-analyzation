@@ -6,7 +6,7 @@ config :logger,
 
 config :traffic_analyzer, TrafficAnalyzer.Scheduler,
   jobs: [
-    {"* * * * *", fn -> require Logger; Logger.debug("quantum heartbeat...") end},
+    {"* * * * *", {TrafficAnalyzer.HeartbeatJob, :call, []}},
     {"* * * * *", {TrafficAnalyzer.JobService, :call, []}}
   ]
 
