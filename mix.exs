@@ -34,7 +34,8 @@ defmodule TrafficAnalyzer.MixProject do
       {:ex_machina, "2.2.0", only: [:test]},
       {:mox, "0.4.0", only: [:test]},
       {:edeliver, "1.6.0"},
-      {:distillery, "2.0.10"}
+      {:distillery, "2.0.10"},
+      {:logger_file_backend, "0.0.10"}
     ]
   end
 

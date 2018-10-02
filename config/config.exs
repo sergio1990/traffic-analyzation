@@ -1,7 +1,11 @@
 use Mix.Config
 
 config :logger,
-  backends: [:console],
+  backends: [:console, {LoggerFileBackend, :debug_log}],
+  level: :debug
+
+config :logger, :debug_log,
+  path: "log/debug.log",
   level: :debug
 
 config :traffic_analyzer, TrafficAnalyzer.Scheduler,
