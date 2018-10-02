@@ -16,7 +16,7 @@ config :traffic_analyzer, TrafficAnalyzer.Scheduler,
 
 config :traffic_analyzer,
   path_source: TrafficAnalyzer.PathSource.StubSource,
-  result_persistance: TrafficAnalyzer.ScrapingResult.CSVPersistance,
+  result_persistance: TrafficAnalyzer.ScrapingResult.DbPersistance,
   job_enqueuer: TrafficAnalyzer.DelayedWork.ExqEnqueuer,
   directions_api_client: TrafficAnalyzer.DirectionsApi.GmapsClient,
   ecto_repos: [TrafficAnalyzer.DB.Repo]
