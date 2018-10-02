@@ -11,7 +11,7 @@ config :logger, :debug_log,
 config :traffic_analyzer, TrafficAnalyzer.Scheduler,
   jobs: [
     {"* * * * *", {TrafficAnalyzer.HeartbeatJob, :call, []}},
-    {"* * * * *", {TrafficAnalyzer.JobService, :call, []}}
+    {"0,30 * * * *", {TrafficAnalyzer.JobService, :call, []}}
   ]
 
 config :traffic_analyzer,
