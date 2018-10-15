@@ -34,6 +34,11 @@ config :exq,
   max_retries: 25,
   shutdown_timeout: 5000
 
+config :exq_ui,
+  web_port: 4040,
+  web_namespace: "exq",
+  server: true
+
 config :google_maps,
   api_key: System.get_env("GMAPS_API_KEY")
 
